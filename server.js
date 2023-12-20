@@ -1,40 +1,34 @@
-console.log("Node project is start from here.....")
-
+const path = require('path')
 const express = require('express')
 const app = express()
 
-function something() {
-    console.log("Called.")
-
-}
-// app.get("/", () => {
-//     console.log("Called Again.")
-// })
+const authController = require("./controllers/AuthController")
 
 app.get("/", (req, res) => {
     // console.log(req)
-    res.send("<h1>Home Page<h1>")
+    // res.send("<h1>Home Page<h1>")
+    res.sendFile(path.join(__dirname, "views", "Home.html"))
 })
 
 app.get("/about", (req, res) => {
     // console.log(req)
-    res.send("<h1>About Page<h1>")
+    // res.send("<h1>About Page<h1>")
+    res.sendFile(path.join(__dirname, "views", "About.html"))
 })
 
 app.get("/contact", (req, res) => {
     // console.log(req)
-    res.send("<h1>Contact Page<h1>")
+    // res.send("<h1>Contact Page<h1>")
+    res.sendFile(path.join(__dirname, "views", "Contact.html"))
 })
 
-app.get("/login", (req, res) => {
-    // console.log(req)
-    res.send("<h1>Login Page<h1>")
-})
+app.use("/", authController)
 
-app.get("/registration", (req, res) => {
+app.get("*", (req, res) => {
     // console.log(req)
-    res.send("<h1>Registration Page<h1>")
+    // res.send("<h1>404 Page<h1>")
+    res.sendFile(path.join(__dirname, "views", "404.html"))
 })
 
 app.listen(3000)
-localhost: 3000
+// localhost: 3000
