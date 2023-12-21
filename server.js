@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     // console.log(req)
     // res.send("<h1>Home Page<h1>")
     // res.sendFile(path.join(__dirname, "views", "Home.html"))
-    res.render('Demo.ejs')
+    res.render('Demo.ejs', {pageTitle: "Home", text: "I love my countury"});
 })
 
 app.get("/about", (req, res) => {
