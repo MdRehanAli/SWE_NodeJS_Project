@@ -13,19 +13,21 @@ app.get("/", (req, res) => {
     // console.log(req)
     // res.send("<h1>Home Page<h1>")
     // res.sendFile(path.join(__dirname, "views", "Home.html"))
-    res.render('Demo.ejs', {pageTitle: "Home", text: "I love my countury"});
+    res.render("pages/home", { pageTitle: "Home", text: "From Home" });
 })
 
 app.get("/about", (req, res) => {
     // console.log(req)
     // res.send("<h1>About Page<h1>")
-    res.sendFile(path.join(__dirname, "views", "About.html"))
+    // res.sendFile(path.join(__dirname, "views", "About.html"))
+    res.render("pages/about", { pageTitle: "About", text: "From About" });
 })
 
 app.get("/contact", (req, res) => {
     // console.log(req)
     // res.send("<h1>Contact Page<h1>")
-    res.sendFile(path.join(__dirname, "views", "Contact.html"))
+    // res.sendFile(path.join(__dirname, "views", "Contact.html"))
+    res.render("pages/contact", { pageTitle: "Contact", text: "From Contact" });
 })
 
 app.use("/", authController)
@@ -33,7 +35,8 @@ app.use("/", authController)
 app.get("*", (req, res) => {
     // console.log(req)
     // res.send("<h1>404 Page<h1>")
-    res.sendFile(path.join(__dirname, "views", "404.html"))
+    // res.sendFile(path.join(__dirname, "views", "404.html"))
+    res.render("pages/404", { pageTitle: "Not Found", text: "Invalid Page search" });
 })
 
 app.listen(3000)
