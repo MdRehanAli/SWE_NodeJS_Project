@@ -1,13 +1,19 @@
 const path = require('path')
 const express = require('express')
+const ejs = require('ejs')
 const app = express()
 
+// import the controller
 const authController = require("./controllers/AuthController")
+
+//Templating Engine
+app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
     // console.log(req)
     // res.send("<h1>Home Page<h1>")
-    res.sendFile(path.join(__dirname, "views", "Home.html"))
+    // res.sendFile(path.join(__dirname, "views", "Home.html"))
+    res.render('Demo.ejs')
 })
 
 app.get("/about", (req, res) => {
