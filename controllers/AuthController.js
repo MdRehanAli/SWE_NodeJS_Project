@@ -6,12 +6,14 @@ const router = express.Router();
 router.get("/login", (req, res) => {
     // console.log(req);
     // res.send("Login Page")
-    res.sendFile(path.join(__dirname, "..", "views", "Login.html"))
+    // res.sendFile(path.join(__dirname, "..", "views", "Login.html"))
+    res.render("pages/Login", {pageTitle: "Login", text: "From Login"})
 })
 router.get("/registration", (req, res) => {
     // console.log(req);
     // res.send("Registration Page")
     res.sendFile(path.join(__dirname, "..", "views", "Registration.html"))
+    res.render("pages/Registration", {pageTitle: "Registration", text: "From registration"})
 })
 
 module.exports = router;
