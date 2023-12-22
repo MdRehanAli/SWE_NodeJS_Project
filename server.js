@@ -2,9 +2,22 @@ const path = require('path')
 const express = require('express')
 const ejs = require('ejs')
 const app = express()
+const bodyParser = require('body-parser')
 
 // import the controller
 const authController = require("./controllers/AuthController")
+
+// DotENV
+const config = require("./config")
+console.log(process.env.PORT)
+
+// bodyParser
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 
 //Templating Engine
 app.set('view engine', 'ejs')
@@ -39,5 +52,6 @@ app.get("*", (req, res) => {
     res.render("pages/404", { pageTitle: "Not Found", text: "Invalid Page search" });
 })
 
-app.listen(3000)
-// localhost: 3000
+const PORT = 5000
+app.listen(PORT)
+// localhost:5000
